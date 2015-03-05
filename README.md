@@ -1,4 +1,4 @@
-https://codeship.com/projects/5b259310-a5bb-0132-f089-42192025a880/status?branch=master
+[ ![Codeship Status for weo-edu/discourse-sso](https://codeship.com/projects/5b259310-a5bb-0132-f089-42192025a880/status?branch=master)](https://codeship.com/projects/66828)
 
 # Discourse sso
 
