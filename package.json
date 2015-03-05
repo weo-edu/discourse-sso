@@ -3,11 +3,8 @@
   "version": "0.1.0",
   "description": "discore sso lib and middleware",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",

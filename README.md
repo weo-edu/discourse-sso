@@ -1,51 +1,40 @@
-# Single-sign-on for Discourse via Node.js
-[![Build Status](https://travis-ci.org/ArmedGuy/discourse_sso_node.png?branch=master)](https://travis-ci.org/ArmedGuy/discourse_sso_node)
+# Discourse sso
 
-Also available for PHP [here](https://github.com/ArmedGuy/discourse_sso_node).
+Middleware and library for discourse sso;
 
-This is a small class to help with providing an SSO source for Discourse forums.
-It provides 3 help functions for validating incoming requests, extracting nonce, and building the returning queryString.
+## Installation
 
-For more information on the SSO settings in Discourse, visit <https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045>
-
-### How to use the package
-
-
-Simply install via npm, require the package and create a new object, providing the SSO secret defined in Discourse
-```javascript
-var discourse_sso = require('discourse-sso');
-var sso = new discourse_sso("-your-sso_secret-goes-here-");
+```
+$ npm install discourse-sso
 ```
 
-To validate incoming logins, you can do:
-```javascript
-var payload = ... // fetch from incoming request
-var sig = ... // fetch from incoming request
-if(sso.validate(payload, sig)) {
-}
+## API
+
+### .sso(secretKey)
+
+Returns a function for signing login info.
+
+```js
+var discourseSso = require('discourse-sso');
+var sign = discourseSso.sso('fat tio');
+
+// {sso: discourse_reply_payload, sig: discourse_reply_sig}
+var signed = sign({
+  email: email,
+  external_id: external_id
+}, {sso: discourse_payload, sig: discourse_sig});
+
 ```
 
+### .middleware(secretKey)
 
-To extract the nonce(the little piece of data that identifies the login, read more in the above link), use:
-```javascript
-var nonce = sso.getNonce(payload);
+Returns middleware for adding a signed payload to the request. Expects the request to have login info at `req.user` and puts the payload at `req.discourse`.
+
+```js
+var discourse = discourseSso.middleware('fat tio');
+
+app.get('/sso', getUser, discourse, function(req, res) {
+  res.send(req.discourse);
+});
+
 ```
-
-
-At last, to produce the query string that is to be sent back to discourse, do:
-```javascript
-var userparams = {
-	// Required, will throw exception otherwise
-	"nonce": nonce,
-	"external_id": "some user id here",
-	"email": "some user email",
-	// Optional
-	"username": "some username",
-	"name": "some real name"
-};
-var q = sso.buildLoginString(userparams);
-```
-
-## License
-
-MIT
