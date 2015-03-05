@@ -1,3 +1,5 @@
+https://codeship.com/projects/5b259310-a5bb-0132-f089-42192025a880/status?branch=master
+
 # Discourse sso
 
 Middleware and library for discourse sso;
@@ -5,7 +7,7 @@ Middleware and library for discourse sso;
 ## Installation
 
 ```
-$ npm install discourse-sso
+$ npm install sso-discourse
 ```
 
 ## API
