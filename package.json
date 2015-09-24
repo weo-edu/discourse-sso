@@ -1,6 +1,6 @@
 {
   "name": "sso-discourse",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "discore sso lib and middleware",
   "main": "index.js",
   "scripts": {
