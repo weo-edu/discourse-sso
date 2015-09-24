@@ -1,6 +1,6 @@
-[ ![Codeship Status for weo-edu/discourse-sso](https://codeship.com/projects/5b259310-a5bb-0132-f089-42192025a880/status?branch=master)](https://codeship.com/projects/66828)
-
 # Discourse sso
+
+[![Codeship Status for weo-edu/sso-discourse](https://img.shields.io/codeship/5b259310-a5bb-0132-f089-42192025a880/master.svg)](https://codeship.com/projects/66828) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 Middleware and library for discourse sso;
 
